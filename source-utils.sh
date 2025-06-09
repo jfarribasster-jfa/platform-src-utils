@@ -12,7 +12,11 @@ vault_kv_login() {
     local ACCESS_TOKEN=$(curl -s -X POST --data $DAT http://$VAULT_DNS/v1/auth/approle/login | jq '.auth.client_token' | sed 's/"//g')
     export VAULT_ADDR=http://$VAULT_DNS
     export VAULT_TOKEN=$ACCESS_TOKEN 
+    export HCP_CONFIG_DISABLE=true
+    echo "$(date +%Y%m%d) $(date +%H:%M:%S) - INFO - VAULT_ADDR: $VAULT_ADDR"
+    echo "$(date +%Y%m%d) $(date +%H:%M:%S) - INFO - VAULT_TOKEN: $VAULT_TOKEN"
 }
+
 
 # ********************************************************************************
 # ***  Replace Secrets from an Key Vault in a filename ***
