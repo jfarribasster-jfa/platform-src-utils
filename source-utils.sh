@@ -15,6 +15,7 @@ vault_kv_login() {
     export HCP_CONFIG_DISABLE=true
     echo "$(date +%Y%m%d) $(date +%H:%M:%S) - INFO - VAULT_ADDR: $VAULT_ADDR"
     echo "$(date +%Y%m%d) $(date +%H:%M:%S) - INFO - VAULT_TOKEN: $VAULT_TOKEN"
+    echo "$(date +%Y%m%d) $(date +%H:%M:%S) - INFO - DAT: $DAT"
 }
 
 
