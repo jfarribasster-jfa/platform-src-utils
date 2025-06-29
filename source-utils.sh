@@ -7,7 +7,7 @@ vault_kv_login() {
   
     local ROLE_ID=$1
     local SECRET_ID=$2
-    local VAULT_DNS="ec2-35-153-200-234.compute-1.amazonaws.com:8200"  
+    local VAULT_DNS="ec2-44-202-13-48.compute-1.amazonaws.com:8200"  
     local DAT="{\"role_id\":\"${ROLE_ID}\",\"secret_id\":\"${SECRET_ID}\"}"
     local ACCESS_TOKEN=$(curl -s -X POST --data $DAT http://$VAULT_DNS/v1/auth/approle/login | jq '.auth.client_token' | sed 's/"//g')
     export VAULT_ADDR=http://$VAULT_DNS
