@@ -45,7 +45,7 @@ replace-secrets () {
      local SECRETS=`sed -n 's/.*\(#{[-[:alnum:]]*}#\).*/\1/p' $FILENAME_TO_REPLACE | sort -u | sed 's/#{//g' | sed 's/}#//g'`
      for SECRET in ${SECRETS[@]};
      do
-       vault kv get -mount=secret -field=${SECRET} ${ENVIRONMENT}/${SECRET} > /dev/null
+       vault kv get -mount=secret -field=${SECRET} ${ENVIRONMENT}/${SECRET}
        local RESULT=$?
         if [ $RESULT -eq 0 ]; then
            echo "$(date +%Y%m%d) $(date +%H:%M:%S) - INFO - Replacing the Secret ${SECRET} in filename ${FILENAME_TO_REPLACE}"
